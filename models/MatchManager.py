@@ -20,7 +20,7 @@ class MatchManager:
             conn.close()
 
     # Update match scores or date
-    def update_match(self, match_id, team1_name=None, team2_name=None, match_date=None, score_team1=None, score_team2=None):
+    def update_match(self, id, team1_name=None, team2_name=None, match_date=None, score_team1=None, score_team2=None):
         conn = get_connection()
         cursor = conn.cursor()
 
@@ -48,7 +48,7 @@ class MatchManager:
             return
 
         values.append(match_id)
-        query = f"UPDATE matchs SET {', '.join(updates)} WHERE match_id = %s"
+        query = f"UPDATE matchs SET {', '.join(updates)} WHERE id = %s"
 
         try:
             cursor.execute(query, values)
@@ -73,3 +73,21 @@ class MatchManager:
         finally:
             cursor.close()
             conn.close()
+
+    def get_all_matches(self):
+        try:
+            conn = get_connection()
+            cursor = conn.cursor()
+            cursor.execute(
+                "SELECT id, team1_name, team2_name, match_date, score_team1, score_team2 FROM matchs"
+            )
+            return cursor.fetchall()
+        except Exception as e:
+            print("DB error in get_all_matches:", e)
+            return []
+        finally:
+            try:
+                cursor.close()
+                conn.close()
+            except:
+                pass

@@ -1,6 +1,23 @@
 from db_connection import get_connection
 
 class TeamManager:
+    def fetch_teams(self):
+        conn = get_connection()
+        if not conn:
+            return []
+
+        cursor = conn.cursor()
+        try:
+            # Only select the existing columns
+            cursor.execute("SELECT team_name, coach_name, team_country FROM teams ORDER BY team_name;")
+            return cursor.fetchall()  # Returns list of tuples
+        except Exception as e:
+            print("DB error in fetch_teams:", e)
+            return []
+        finally:
+            cursor.close()
+            conn.close()
+
     # Add a new team
     def add_team(self, team_name, coach_name, team_country):
         conn = get_connection()

@@ -64,3 +64,17 @@ class PlayerManager:
         finally:
             cursor.close()
             conn.close()
+
+    def get_all_players(self):
+        conn = get_connection()
+        cursor = conn.cursor()
+        try:
+            cursor.execute("SELECT player_id, player_name, team_name, player_position FROM players")
+            results = cursor.fetchall()
+            return results
+        except Exception as e:
+            print("Failed to fetch players:", e)
+            return []
+        finally:
+            cursor.close()
+            conn.close()
