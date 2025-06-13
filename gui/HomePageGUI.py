@@ -2,18 +2,22 @@ import tkinter as tk
 from tkinter import messagebox
 from gui.ManagerRegisterGUI import ManagerRegisterGUI
 from gui.ScoreboardGUI import ScoreboardGUI
+from models.SessionManager import SessionManager
 
 class HomePageGUI:
-    def __init__(self, master):
+    def __init__(self, master, logged_in=False):
         self.master = master
-        self.master.title("🏟 Sports Match Tracker - Home")
+        username = SessionManager.get_logged_in_manager()
+        self.master.title(f"🏟 Sports Match Tracker - Welcome, {username}")
         self.master.geometry("400x550")
+        self.logged_in = logged_in
 
         title = tk.Label(master, text="🏆 Sports Match Tracker", font=("Arial", 18, "bold"))
         title.pack(pady=20)
 
-        tk.Button(master, text="Manager Login", width=20, command=self.manager_login).pack(pady=5)
-        tk.Button(master, text="Manager Register", width=20, command=self.manager_register).pack(pady=5)
+        if not self.logged_in:
+            tk.Button(master, text="Manager Login", width=20, command=self.manager_login).pack(pady=5)
+            tk.Button(master, text="Manager Register", width=20, command=self.manager_register).pack(pady=5)
 
         features = [
             ("Show Matches", self.show_matches),
@@ -23,17 +27,27 @@ class HomePageGUI:
             ("History Matches", self.show_history),
             ("Statistics", self.show_statistics),
             ("Cards", self.show_cards),
+            ("Logout", self.logout),
             ("Exit", master.quit)
         ]
 
-        for text, command in features:
+        button_frame = tk.Frame(master)
+        button_frame.pack(pady=10)
+
+        for text, command in features[:-2]:
             tk.Button(master, text=text, width=20, command=command).pack(pady=5)
+
+        logout_button = tk.Button(master, text="Logout", width=20, command=self.logout)
+        logout_button.pack(side='bottom', anchor='se', padx=10, pady=10)
+
+        exit_button = tk.Button(master, text="Exit", width=20, command=master.quit)
+        exit_button.pack(side='bottom', anchor='se', padx=10, pady=5)
 
     def manager_login(self):
         print("Open Manager Login Window")
         login_window = tk.Toplevel(self.master)
         from gui.ManagerLoginGUI import ManagerLoginGUI
-        ManagerLoginGUI(login_window)
+        ManagerLoginGUI(login_window, self.master)
 
     def manager_register(self):
         print("Open Manager Registration Window")
@@ -79,4 +93,11 @@ class HomePageGUI:
             show_cards_window = tk.Toplevel(self.master)
             from gui.ShowCardsGUI import ShowCardsGUI
             ShowCardsGUI(show_cards_window)
-            # olelelleleleleleleleel
+
+    def logout(self):
+        SessionManager.clear_session()
+        self.master.destroy()
+        login_root = tk.Tk()
+        from gui.ManagerLoginGUI import ManagerLoginGUI
+        ManagerLoginGUI(login_root)
+        login_root.mainloop()

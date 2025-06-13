@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import messagebox
 from models.ManagerRegister import ManagerRegister
 
+
 class ManagerRegisterGUI:
     def __init__(self, master):
         self.master = master
@@ -22,6 +23,16 @@ class ManagerRegisterGUI:
 
     def register(self):
         data = {field: self.entries[field].get() for field in self.entries}
+
+        # Basic validation
+        if not all(data.values()):
+            messagebox.showerror("Error", "Please fill in all fields.")
+            return
+
+        if data["Password"] != data["Confirm Password"]:
+            messagebox.showerror("Error", "Passwords do not match. Please re-enter.")
+            return
+
         manager = ManagerRegister(
             data["First Name"],
             data["Last Name"],
@@ -31,6 +42,11 @@ class ManagerRegisterGUI:
             data["Password"],
             data["Confirm Password"]
         )
-        manager.register_manager()
-        messagebox.showinfo("Done", "Manager registered. You can now log in.")
-        self.master.destroy()
+
+        success, message = manager.register_manager()
+
+        if success:
+            messagebox.showinfo("Success", message)
+            self.master.destroy()
+        else:
+            messagebox.showerror("Error", message)

@@ -11,14 +11,15 @@ class ManagerRegister:
         self.confirm_password = confirm_password
 
     def register_manager(self):
-        # Password confirmation check
+        # تأكد من تطابق كلمة المرور
         if self.password != self.confirm_password:
-            print("Passwords do not match.")
-            return
+            return False, "Passwords do not match."
 
         conn = get_connection()
-        cursor = conn.cursor()
+        if not conn:
+            return False, "Database connection failed."
 
+        cursor = conn.cursor()
         query = """
             INSERT INTO register_manager 
             (first_name, last_name, username, phone_number, gender, password)
@@ -30,15 +31,15 @@ class ManagerRegister:
             self.username,
             self.phone_number,
             self.gender,
-            self.password  # You can hash it for security in real projects
+            self.password
         )
 
         try:
             cursor.execute(query, values)
             conn.commit()
-            print("Manager registered successfully.")
+            return True, "Manager registered successfully."
         except Exception as e:
-            print("Manager registration failed:", e)
+            return False, f"Registration failed: {str(e)}"
         finally:
             cursor.close()
             conn.close()
