@@ -27,11 +27,13 @@ class ShowStatisticsGUI:
         button_frame = tk.Frame(master)
         button_frame.pack(pady=10)
 
-        self.refresh_button = tk.Button(master, text="Refresh Statistic", command=self.load_statistics)
-        self.refresh_button.pack(side=tk.LEFT, padx=10)
+        # "Back" (closes window)
+        self.back_button = tk.Button(master, text="Back", command=self.master.destroy)
+        self.back_button.pack(side=tk.LEFT, padx=10)
 
-        self.back_button = tk.Button(button_frame, text = "Back", command = self.master.destroy)
-        self.back_button.pack(side=tk.LEFT, padx = 10)
+        # "Refresh Statistic" (reloads stats)
+        self.refresh_button = tk.Button(button_frame, text="Refresh", command=self.load_statistics)
+        self.refresh_button.pack(side=tk.LEFT, padx=10)
 
         # Load and show stats on start
         self.load_statistics()

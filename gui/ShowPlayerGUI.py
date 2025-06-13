@@ -20,11 +20,18 @@ class ShowPlayerGUI:
         for col in columns:
             self.tree.heading(col, text=col)
             self.tree.column(col, width=150, anchor=tk.CENTER)
-        self.tree.pack(fill=tk.BOTH, expand=True)
+        self.tree.pack(fill=tk.BOTH, expand=True, padx=10, pady=5)
 
-        # Refresh button
+        # Refresh button (centered below the tree)
         refresh_btn = tk.Button(master, text="Refresh", command=self.load_players)
-        refresh_btn.pack(pady=10)
+        refresh_btn.pack(pady=5)
+
+        # Bottom frame for the Back button
+        bottom_frame = tk.Frame(master)
+        bottom_frame.pack(side=tk.BOTTOM, fill=tk.X, pady=10)
+
+        back_btn = tk.Button(bottom_frame, text="Back", command=self.master.destroy)
+        back_btn.pack(side=tk.LEFT, padx=20)
 
         # Load data
         self.load_players()
@@ -42,5 +49,5 @@ class ShowPlayerGUI:
 # Run GUI
 if __name__ == "__main__":
     root = tk.Tk()
-    app = ShowPlayersClass(root)
+    app = ShowPlayerGUI(root)
     root.mainloop()

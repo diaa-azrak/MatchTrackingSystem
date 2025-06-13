@@ -6,7 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="363bdb2f-f66d-474a-810b-d7b17e86ed20" name="Changes" comment="added new classes for test_manager.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/ScoreboardGUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/gui/ScoreboardGUI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/ShowMatchGUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/gui/ShowMatchGUI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/ShowPlayerGUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/gui/ShowPlayerGUI.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gui/ShowStatisticsGUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/gui/ShowStatisticsGUI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/ShowTeamsGUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/gui/ShowTeamsGUI.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +56,7 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Python.HomePageGUI.executor": "Run",
     "Python.ManagerLoginGUI.executor": "Run",
+    "Python.ScoreboardGUI.executor": "Run",
     "Python.ShowCardsGUI.executor": "Run",
     "Python.ShowMatchGUI.executor": "Run",
     "Python.ShowPlayerGUI.executor": "Run",
@@ -73,7 +78,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "vcs.Git",
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -89,8 +94,8 @@
       <recent name="C:\Users\ACER\PycharmProjects\PythonProject\test class" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.ShowStatisticsGUI">
-    <configuration name="HomePageGUI" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.ShowPlayerGUI">
+    <configuration name="ScoreboardGUI" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PythonProject" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -104,7 +109,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/gui/HomePageGUI.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/gui/ScoreboardGUI.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -182,7 +187,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="ShowTeamsGUI" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PythonProject" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -191,12 +196,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test_class" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/gui" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_class/main.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/gui/ShowTeamsGUI.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -207,11 +212,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.ShowStatisticsGUI" />
-        <item itemvalue="Python.main" />
-        <item itemvalue="Python.HomePageGUI" />
-        <item itemvalue="Python.ShowMatchGUI" />
         <item itemvalue="Python.ShowPlayerGUI" />
+        <item itemvalue="Python.ShowTeamsGUI" />
+        <item itemvalue="Python.ShowStatisticsGUI" />
+        <item itemvalue="Python.ShowMatchGUI" />
+        <item itemvalue="Python.ScoreboardGUI" />
       </list>
     </recent_temporary>
   </component>
@@ -241,7 +246,8 @@
       <workItem from="1748987105836" duration="5602000" />
       <workItem from="1749315932146" duration="1431000" />
       <workItem from="1749595916524" duration="820000" />
-      <workItem from="1749725505781" duration="22756000" />
+      <workItem from="1749725505781" duration="23078000" />
+      <workItem from="1749816057854" duration="7115000" />
     </task>
     <task id="LOCAL-00001" summary="enable version control">
       <option name="closed" value="true" />
@@ -283,7 +289,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749749417285</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="added new classes for test_manager.py">
+      <option name="closed" value="true" />
+      <created>1749764534924</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1749764534924</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -306,13 +320,14 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/PythonProject$ShowTeamsGUI.coverage" NAME="ShowTeamsGUI Coverage Results" MODIFIED="1749742231967" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/gui" />
-    <SUITE FILE_PATH="coverage/PythonProject$ShowMatchGUI.coverage" NAME="ShowMatchGUI Coverage Results" MODIFIED="1749747116390" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/gui" />
+    <SUITE FILE_PATH="coverage/PythonProject$ScoreboardGUI.coverage" NAME="ScoreboardGUI Coverage Results" MODIFIED="1749819631999" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/gui" />
+    <SUITE FILE_PATH="coverage/PythonProject$ShowMatchGUI.coverage" NAME="ShowMatchGUI Coverage Results" MODIFIED="1749820846739" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/gui" />
+    <SUITE FILE_PATH="coverage/PythonProject$ShowTeamsGUI.coverage" NAME="ShowTeamsGUI Coverage Results" MODIFIED="1749823100217" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/gui" />
     <SUITE FILE_PATH="coverage/PythonProject$test_connection__1_.coverage" NAME="test_connection (1) Coverage Results" MODIFIED="1748119829976" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test class" />
     <SUITE FILE_PATH="coverage/PythonProject$ManagerLoginGUI.coverage" NAME="ManagerLoginGUI Coverage Results" MODIFIED="1749726772914" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/gui" />
     <SUITE FILE_PATH="coverage/PythonProject$test_manager.coverage" NAME="test_manager Coverage Results" MODIFIED="1748988515334" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PythonProject$main.coverage" NAME="main Coverage Results" MODIFIED="1749763952439" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_class" />
-    <SUITE FILE_PATH="coverage/PythonProject$ShowPlayerGUI.coverage" NAME="ShowPlayerGUI Coverage Results" MODIFIED="1749743890922" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/gui" />
+    <SUITE FILE_PATH="coverage/PythonProject$main.coverage" NAME="main Coverage Results" MODIFIED="1749819348188" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_class" />
+    <SUITE FILE_PATH="coverage/PythonProject$ShowPlayerGUI.coverage" NAME="ShowPlayerGUI Coverage Results" MODIFIED="1749823278609" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/gui" />
     <SUITE FILE_PATH="coverage/PythonProject$team.coverage" NAME="team Coverage Results" MODIFIED="1748120596529" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models" />
     <SUITE FILE_PATH="coverage/PythonProject$test_card.coverage" NAME="test_card Coverage Results" MODIFIED="1749743657266" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_class" />
     <SUITE FILE_PATH="coverage/PythonProject$db_connection.coverage" NAME="db_connection Coverage Results" MODIFIED="1748119802184" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test class" />
@@ -320,6 +335,6 @@
     <SUITE FILE_PATH="coverage/PythonProject$test_connection.coverage" NAME="test_connection Coverage Results" MODIFIED="1747575991892" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/.venv/Scripts" />
     <SUITE FILE_PATH="coverage/PythonProject$match.coverage" NAME="match Coverage Results" MODIFIED="1748120605063" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models" />
     <SUITE FILE_PATH="coverage/PythonProject$HomePageGUI.coverage" NAME="HomePageGUI Coverage Results" MODIFIED="1749749313230" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/gui" />
-    <SUITE FILE_PATH="coverage/PythonProject$ShowStatisticsGUI.coverage" NAME="ShowStatisticsGUI Coverage Results" MODIFIED="1749764411143" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/gui" />
+    <SUITE FILE_PATH="coverage/PythonProject$ShowStatisticsGUI.coverage" NAME="ShowStatisticsGUI Coverage Results" MODIFIED="1749822046348" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/gui" />
   </component>
 </project>

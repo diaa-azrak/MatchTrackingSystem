@@ -20,8 +20,17 @@ class ShowMatchGUI:
             self.tree.column(col, width=100, anchor=tk.CENTER)
         self.tree.pack(fill=tk.BOTH, expand=True)
 
-        refresh_btn = tk.Button(master, text="Refresh", command=self.load_matches)
-        refresh_btn.pack(pady=10)
+        # Frame for buttons
+        button_frame = tk.Frame(master)
+        button_frame.pack(fill=tk.X, pady=10)
+
+        # Refresh button in center
+        refresh_btn = tk.Button(button_frame, text="Refresh", command=self.load_matches)
+        refresh_btn.pack(side=tk.TOP)
+
+        # Back button at right
+        back_btn = tk.Button(button_frame, text="Back", command=self.master.destroy)
+        back_btn.pack(side=tk.LEFT, padx=10)
 
         self.load_matches()
 
@@ -37,7 +46,18 @@ class ShowMatchGUI:
         for match_id, team1, team2, date, score1, score2 in matches:
             self.tree.insert("", tk.END, values=(match_id, team1, team2, date, score1, score2))
 
+    def return_home(self):
+        self.master.destroy()
+        try:
+            from gui.HomePageGUI import HomePageGUI
+            home_window = tk.Tk()
+            HomePageGUI(home_window)
+            home_window.mainloop()
+        except ImportError:
+            print("HomePageGUI could not be loaded (possibly running directly).")
+
+# Allow running independently for testing
 if __name__ == "__main__":
     root = tk.Tk()
-    app = ShowMatchesClass(root)
+    app = ShowMatchGUI(root)
     root.mainloop()
