@@ -1,41 +1,33 @@
 import tkinter as tk
-from tkinter import ttk
-from tkinter import messagebox
-from models.MatchManager import MatchManager  # your MatchManager import
+from tkinter import ttk, messagebox
+from models.MatchManager import MatchManager
 
 class ShowStatisticsGUI:
-    def __init__(self, master):
+    def __init__(self, master, role="User"):
         self.master = master
+        self.role = role
         self.master.title("Team Statistics")
-        self.master.geometry("800x400")
+        self.master.geometry("900x450")
 
         self.match_manager = MatchManager()
 
-        title_label = tk.Label(master, text="Team Statistics", font=("Arial", 18, "bold"))
-        title_label.pack(pady = 10)
+        tk.Label(master, text="Team Statistics", font=("Arial", 18, "bold")).pack(pady=10)
 
-        columns = (
-            "Team", "MP", "W", "D", "L", "GF", "GA", "GD", "Points"
-        )
+        columns = ("Team", "MP", "W", "D", "L", "GF", "GA", "GD", "Points")
         self.tree = ttk.Treeview(master, columns=columns, show="headings")
         for col in columns:
             self.tree.heading(col, text=col)
             self.tree.column(col, width=80, anchor=tk.CENTER)
 
-        self.tree.pack(fill=tk.BOTH, expand=True)
+        self.tree.pack(fill=tk.BOTH, expand=True, padx=10, pady=5)
 
-        button_frame = tk.Frame(master)
-        button_frame.pack(pady=10)
+        # Bottom frame for Back & Refresh buttons
+        bottom_frame = tk.Frame(master)
+        bottom_frame.pack(side=tk.BOTTOM, fill=tk.X, pady=10)
 
-        # "Back" (closes window)
-        self.back_button = tk.Button(master, text="Back", command=self.master.destroy)
-        self.back_button.pack(side=tk.LEFT, padx=10)
+        tk.Button(bottom_frame, text="Back", command=self.master.destroy).pack(side=tk.LEFT, padx=20)
+        tk.Button(bottom_frame, text="Refresh", command=self.load_statistics).pack(side=tk.RIGHT, padx=20)
 
-        # "Refresh Statistic" (reloads stats)
-        self.refresh_button = tk.Button(button_frame, text="Refresh", command=self.load_statistics)
-        self.refresh_button.pack(side=tk.LEFT, padx=10)
-
-        # Load and show stats on start
         self.load_statistics()
 
     def load_statistics(self):
@@ -49,7 +41,6 @@ class ShowStatisticsGUI:
                 except ValueError:
                     continue
 
-                # Initialize teams in stats if not present
                 for team in [team1, team2]:
                     if team not in stats:
                         stats[team] = {
@@ -57,19 +48,15 @@ class ShowStatisticsGUI:
                             "GF": 0, "GA": 0, "GD": 0, "Points": 0
                         }
 
-                # Only process if both scores are not None
                 if score1 is not None and score2 is not None:
-                    # Update matches played
                     stats[team1]["MP"] += 1
                     stats[team2]["MP"] += 1
 
-                    # Update goals for and against
                     stats[team1]["GF"] += score1
                     stats[team1]["GA"] += score2
                     stats[team2]["GF"] += score2
                     stats[team2]["GA"] += score1
 
-                    # Determine win/draw/loss and points
                     if score1 > score2:
                         stats[team1]["W"] += 1
                         stats[team2]["L"] += 1
@@ -80,12 +67,10 @@ class ShowStatisticsGUI:
                         stats[team1]["D"] += 1
                         stats[team2]["D"] += 1
 
-            # Calculate goal difference and points
             for team, data in stats.items():
                 data["GD"] = data["GF"] - data["GA"]
                 data["Points"] = data["W"] * 3 + data["D"]
 
-            # Clear existing data in treeview
             for row in self.tree.get_children():
                 self.tree.delete(row)
 
@@ -93,15 +78,16 @@ class ShowStatisticsGUI:
                 messagebox.showinfo("Info", "No statistics found.")
                 return
 
-            # Insert sorted stats by points desc, then goal difference desc
             for team, data in sorted(stats.items(), key=lambda x: (x[1]["Points"], x[1]["GD"]), reverse=True):
-                row = (team, data["MP"], data["W"], data["D"], data["L"], data["GF"], data["GA"], data["GD"], data["Points"])
+                row = (team, data["MP"], data["W"], data["D"], data["L"],
+                       data["GF"], data["GA"], data["GD"], data["Points"])
                 self.tree.insert("", tk.END, values=row)
 
         except Exception as e:
             messagebox.showerror("Error", f"Failed to load statistics:\n{e}")
 
+# ✅ Standalone testing
 if __name__ == "__main__":
     root = tk.Tk()
-    app = ShowStatisticsGUI(root)
+    ShowStatisticsGUI(root, role="Manager")  # or "User"
     root.mainloop()

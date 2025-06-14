@@ -8,9 +8,8 @@ class TeamManager:
 
         cursor = conn.cursor()
         try:
-            # Only select the existing columns
-            cursor.execute("SELECT team_name, coach_name, team_country FROM teams ORDER BY team_name;")
-            return cursor.fetchall()  # Returns list of tuples
+            cursor.execute("SELECT team_id, team_name, coach_name, team_country FROM teams ORDER BY team_name;")
+            return cursor.fetchall()  # includes team_id
         except Exception as e:
             print("DB error in fetch_teams:", e)
             return []

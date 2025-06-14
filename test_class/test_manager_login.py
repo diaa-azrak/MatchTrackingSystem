@@ -1,4 +1,4 @@
-from models.ManagerLogin import ManagerLogin
+from models.LoginHandler import ManagerLogin
 
 username = input("Enter username: ")
 password = input("Enter password: ")

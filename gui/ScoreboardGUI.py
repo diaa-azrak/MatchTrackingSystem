@@ -8,9 +8,10 @@ class ScoreboardGUI:
         self.master.title("Scoreboard")
         self.master.geometry("800x400")
 
-
         self.manager = ScoreboardManager()
 
+        title_label = tk.Label(master, text="Scoreboard", font=("Arial", 18, "bold"))
+        title_label.pack(pady=10)
 
         self.columns = ("team_name", "matches_played", "wins", "draws", "losses", "points")
         self.tree = ttk.Treeview(master, columns=self.columns, show="headings")
@@ -19,16 +20,18 @@ class ScoreboardGUI:
             self.tree.heading(col, text=col.replace("_", " ").title())
             self.tree.column(col, width=100, anchor=tk.CENTER)
 
-        self.tree.pack(expand=True, fill="both")
+        self.tree.pack(expand=True, fill="both", padx=10, pady=5)
 
+        # Bottom frame for buttons
         button_frame = tk.Frame(master)
-        button_frame.pack(pady=10)
+        button_frame.pack(fill=tk.X, pady=10)
+
+        # Back (left) and Refresh (right)
+        back_button = tk.Button(button_frame, text="Back", command=self.master.destroy)
+        back_button.pack(side=tk.LEFT, padx=20)
 
         refresh_btn = tk.Button(button_frame, text="Refresh", command=self.load_scoreboard)
-        refresh_btn.pack(side=tk.LEFT, padx=10)
-
-        self.back_button = tk.Button(master, text="Back", command=self.master.destroy)
-        self.back_button.pack(side=tk.LEFT, padx=10)
+        refresh_btn.pack(side=tk.RIGHT, padx=20)
 
         self.load_scoreboard()
 
@@ -43,13 +46,14 @@ class ScoreboardGUI:
         # Insert into treeview
         for row in data:
             self.tree.insert("", tk.END, values=tuple(row[col] for col in self.columns))
+
     def return_home(self):
-        self.master.destroy() #close scoreboard window
+        self.master.destroy()
         from gui.HomePageGUI import HomePageGUI
         home_window = tk.Toplevel()
         HomePageGUI(home_window)
 
-
+# Allow independent running
 if __name__ == "__main__":
     root = tk.Tk()
     app = ScoreboardGUI(root)

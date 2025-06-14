@@ -47,7 +47,7 @@ class MatchManager:
             print("No data provided to update.")
             return
 
-        values.append(match_id)
+        values.append(id)
         query = f"UPDATE matchs SET {', '.join(updates)} WHERE id = %s"
 
         try:
@@ -65,7 +65,7 @@ class MatchManager:
         conn = get_connection()
         cursor = conn.cursor()
         try:
-            cursor.execute("DELETE FROM matchs WHERE match_id = %s", (match_id,))
+            cursor.execute("DELETE FROM matchs WHERE id = %s", (match_id,))
             conn.commit()
             print("Match deleted.")
         except Exception as e:

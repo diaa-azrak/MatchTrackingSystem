@@ -1,4 +1,4 @@
-from models.ManagerRegister import ManagerRegister
+from models.RegisterHandler import ManagerRegister
 from models.PlayerManager import PlayerManager
 from models.TeamManager import TeamManager
 from models.MatchManager import MatchManager
