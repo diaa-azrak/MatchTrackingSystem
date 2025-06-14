@@ -6,12 +6,12 @@ from models.SessionManager import SessionManager
 class HomePageGUI:
     def __init__(self, master, logged_in: bool = False, role: Optional[str] = None):
         self.master = master
-        self.role = role  # "Manager" or "User"
+        self.role = role
         self.logged_in = logged_in
 
         username = SessionManager.get_logged_in_manager()
         self.master.title(f"🏟 Sports Match Tracker - Welcome, {username}")
-        self.master.geometry("400x550")
+        self.master.geometry("400x500")
 
         title = tk.Label(master, text="🏆 Sports Match Tracker", font=("Arial", 18, "bold"))
         title.pack(pady=20)
@@ -29,9 +29,7 @@ class HomePageGUI:
             ("Show Teams", self.show_teams),
             ("Show Players", self.show_players),
             ("Scoreboard", self.show_scoreboard),
-            ("History Matches", self.show_history),
             ("Statistics", self.show_statistics),
-            ("Cards", self.show_cards)
         ]
 
         button_frame = tk.Frame(master)
@@ -43,60 +41,43 @@ class HomePageGUI:
         logout_button = tk.Button(master, text="Logout", width=20, command=self.logout)
         logout_button.pack(side='bottom', anchor='se', padx=10, pady=10)
 
-        exit_button = tk.Button(master, text="Exit", width=20, command=self.master.quit)
+        exit_button = tk.Button(master, text="Exit", width=20, command=self.exit_app)
         exit_button.pack(side='bottom', anchor='se', padx=10, pady=5)
 
     def manager_login(self):
-        print("Open Login Window")
         login_window = tk.Toplevel(self.master)
         from gui.LoginGUI import LoginGUI
         LoginGUI(login_window, self.master)
 
     def manager_register(self):
-        print("Open Registration Window")
         register_window = tk.Toplevel(self.master)
         from gui.RegisterHandlerGUI import RegisterHandlerGUI
         RegisterHandlerGUI(register_window)
 
     def show_scoreboard(self):
-        print("Open Scoreboard Window")
         scoreboard_window = tk.Toplevel(self.master)
         from gui.ScoreboardGUI import ScoreboardGUI
         ScoreboardGUI(scoreboard_window)
 
     def show_matches(self):
-        print("Open Matches Window")
         show_matches_window = tk.Toplevel(self.master)
         from gui.ShowMatchGUI import ShowMatchGUI
         ShowMatchGUI(show_matches_window, role=self.role)
 
     def show_teams(self):
-        print("Open Teams Window")
         show_teams_window = tk.Toplevel(self.master)
         from gui.ShowTeamsGUI import ShowTeamsGUI
         ShowTeamsGUI(show_teams_window, role=self.role)
 
     def show_players(self):
-        print("Open Players Window")
         show_players_window = tk.Toplevel(self.master)
         from gui.ShowPlayerGUI import ShowPlayerGUI
         ShowPlayerGUI(show_players_window, role=self.role)
 
-    def show_history(self):
-        print("Open Match History Window")
-        # You can implement ShowHistoryGUI here if needed
-
     def show_statistics(self):
-        print("Open Statistics Window")
         show_statistic_window = tk.Toplevel(self.master)
         from gui.ShowStatisticsGUI import ShowStatisticsGUI
         ShowStatisticsGUI(show_statistic_window, role=self.role)
-
-    def show_cards(self):
-        print("Open Cards Window")
-        show_cards_window = tk.Toplevel(self.master)
-        from gui.ShowCardsGUI import ShowCardsGUI
-        ShowCardsGUI(show_cards_window, role=self.role)
 
     def logout(self):
         SessionManager.clear_session()
@@ -105,3 +86,6 @@ class HomePageGUI:
         from gui.LoginGUI import LoginGUI
         LoginGUI(login_root)
         login_root.mainloop()
+
+    def exit_app(self):
+        self.master.destroy()  # Proper app shutdown
